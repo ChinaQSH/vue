@@ -143,8 +143,8 @@
 <script>
     import HeaderTop from '../../components/HeaderTop/HeaderTop.vue'
     //动画引包
-    import Swiper from 'swiper/js/swiper.js'
-    import '../../../node_modules/swiper/css/swiper.css'
+    import Swiper from 'swiper/dist/js/swiper.min.js'
+    import '../../../node_modules/swiper/dist/css/swiper.css'
     import ShopList from '../../components/ShopList/ShopList.vue'
     export default {
         components:{
