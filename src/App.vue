@@ -13,14 +13,14 @@
 
     export default {
          mounted(){
-            this.$store.dispatch('getAddress')
+            // this.$store.dispatch('getAddress')
            // const result=await reqFoodCategorys();
            // console.log(result);
-           //   this.getAddress()
+             this.getAddress()
         },
-        // methods:{
-        //      ...mapActions(['getAddress'])
-        // },
+        methods:{
+             ...mapActions(['getAddress'])
+        },
         components: {
             FooterGuide
 
