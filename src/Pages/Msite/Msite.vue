@@ -1,12 +1,18 @@
 <template>
         <div class="msite">
             <HeaderTop :title="address.name">
-                <span class="header_search" slot="left">
+                <router-link class="header_search" slot="left" to="/search">
                     <i class="iconfont icon-sousuo"></i>
-                </span>
-                <span class="header_login" slot="right">
-            <span class="header_login_text">登录|注册</span>
-          </span>
+                </router-link>
+                <router-link class="header_login" slot="right" :to="userInfo._id ? '/userInfo':'/login'">
+                  <span class="header_login_text" v-if="!userInfo._id">
+                    登录|注册
+                  </span>
+                  <span class="header_login_text" v-else>
+                    <i class="iconfont icon-person" ></i>
+                  </span>
+
+          </router-link>
             </HeaderTop>
             <!--首页导航-->
             <nav class="msite_nav">
@@ -55,7 +61,7 @@
         }
       },
       computed:{
-        ...mapState(['address','categorys']),
+        ...mapState(['address','categorys','userInfo']),
         //根据categorys一维数组获取categoryArr二维数组
         categoryArr(){
           const {categorys}=this;
@@ -106,7 +112,40 @@
     @import "../../common/stylus/mixins.styl"
     .msite  //首页
         width 100%
-        .msite_nav
+
+    .header_search
+      position absolute
+      left 15px
+      top 50%
+      transform translateY(-50%)
+      width 10%
+      height 50%
+      .icon-sousuo
+        font-size 25px
+        color #fff
+    .header_title
+      position absolute
+      top 50%
+      left 50%
+      transform translate(-50%, -50%)
+      width 50%
+      color #fff
+      text-align center
+      .header_title_text
+        font-size 20px
+        color #fff
+        display block
+    .header_login
+      font-size 14px
+      color #fff
+      position absolute
+      right 15px
+      top 50%
+      transform translateY(-50%)
+      .header_login_text
+        color #fff
+
+    .msite_nav
             bottom-border-1px(#e4e4e4)
             margin-top 45px
             height 200px
@@ -156,5 +195,6 @@
                     color #999
                     font-size 14px
                     line-height 20px
+
 
 </style>

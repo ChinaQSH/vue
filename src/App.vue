@@ -17,9 +17,10 @@
            // const result=await reqFoodCategorys();
            // console.log(result);
              this.getAddress()
+             this.getUserInfo()
         },
         methods:{
-             ...mapActions(['getAddress'])
+             ...mapActions(['getAddress','getUserInfo'])
         },
         components: {
             FooterGuide

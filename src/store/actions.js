@@ -5,13 +5,15 @@
 import {
     RECEIVE_ADDRESS,
     RECEIVE_CATEGORYS,
-    RECEIVE_SHOPS
+    RECEIVE_SHOPS,
+    RECEIVE_USER_INFO
 } from'./mutation-types'
 import {
     reqAddress,
     reqFoodCategorys,
-    reqShops
-} from'../api'
+    reqShops,
+   reqUserInfo
+} from'../api'  
 export default {
     async getAddress({commit,state}){
     //发送异步ajax请求
@@ -43,4 +45,15 @@ export default {
             commit(RECEIVE_SHOPS,{shops})
         }
     },
+  reCordUserInfo({commit},userInfo){
+      commit(RECEIVE_USER_INFO,{userInfo})
+  },
+  async getUserInfo({commit}){
+      const result=await reqUserInfo()
+    if(result.code===0){
+      const userInfo=result.data
+      commit(RECEIVE_USER_INFO,{userInfo})
+    }
+  }
+
 }
